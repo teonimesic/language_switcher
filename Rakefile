@@ -1,5 +1,5 @@
-require 'rubygems'
 require 'rake'
+require 'rspec/core/rake_task'
 
 begin
   require 'jeweler'
@@ -12,7 +12,8 @@ begin
     gem.email = "stefano.diem@gmail.com"
     gem.homepage = "http://github.com/teonimesic/language_switcher"
     gem.authors = ["Stefano Diem Benatti"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
+    gem.add_development_dependency "rspec-core", ">= 2.0.0.beta.13"
+    gem.add_dependency 'activerecord' '>= 3.0.0.beta4'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -20,28 +21,6 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-#require 'rspec/core/rake_task'
-#RSpec::Core::RakeTask.new(:spec) do |spec|
-#  spec.libs << 'lib' << 'spec'
-#  spec.spec_files = FileList['spec/**/*_spec.rb']
-#end
-
-#RSpec::Core::RakeTask.new(:rcov) do |spec|
-#  spec.libs << 'lib' << 'spec'
-#  spec.pattern = 'spec/**/*_spec.rb'
-#  spec.rcov = true
-#end
-
-task :spec => :check_dependencies
-
+RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "language_switcher #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end

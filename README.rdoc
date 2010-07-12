@@ -1,17 +1,20 @@
-= language_switcher
+= Language Switcher
 
-Description goes here.
+This is a gem for Rails to easily change and iterate over languages defined in I18n.available_locales.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+== Usage
+
+The most useful command should be language_switcher helper,
+which add a div and ul to allow to see an element in several different languages.
+
+I also recommend using some tabbing with js, such as Jquery tabs:
+    $(document).ready(function(){                                                                   
+       $('[data-tabs]').tabs();
+    });
+
+language and each_language are also useful methods.
 
 == Copyright
+This is a pretty simple plugin, but i started to use the same set of methods in
+several projects and decided to make it a gem.
 
-Copyright (c) 2010 Stefano Diem Benatti. See LICENSE for details.
